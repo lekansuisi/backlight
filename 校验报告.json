@@ -1,0 +1,40 @@
+{
+  "shield": "c1_mirror97",
+  "board": "nice_nano_v2",
+  "zmk_revision": "v0.3",
+  "keys": 97,
+  "matrix": "10x10",
+  "holes": [[7,9],[8,9],[9,9]],
+  "diode_direction": "row2col",
+  "rgb": {
+    "leds": 98,
+    "note": "97 键下灯 + 1 状态灯，串成一条链",
+    "driver": "worldsemi,ws2812-spi",
+    "spi": "spi3, MOSI=P1.07",
+    "level_shift": "板载 74AHCT1G125 (P1.07 3.3V -> 5V 灯链)",
+    "color_mapping": "GRB (GREEN RED BLUE)",
+    "chain_length": 98,
+    "spi_one_frame": "0x70",
+    "spi_zero_frame": "0x40",
+    "led_order": "v20 按列蛇形重排，末灯紧邻右上角状态灯"
+  },
+  "per_key_rgb": {
+    "status": "标准 ZMK v0.3 不支持按键单独点灯",
+    "detail": "标准 underglow 只做整条链统一效果(Solid/Breathe/Spectrum/Swirl)。led-indexes 数据已导出(灯序映射表_v21.csv + led-indexes_keymap片段.txt)，待接入 per-key 模块(如 zmk-pk-underglow)后启用",
+    "mapping_ready": "97 键 -> 灯0~96 一一对应，3 空位=-1"
+  },
+  "status_led": {
+    "note": "状态灯串在灯链末端(第98颗)，标准 ZMK 下随整条链显示统一效果；Caps/Num/低电量单独指示需自定义驱动，当前固件未实现"
+  },
+  "checks": [
+    "P1.07 未与矩阵GPIO冲突(矩阵用P0.0-0.21 + P1.01/P1.02)",
+    "chain-length=98 与灯数一致",
+    "GRB color-mapping 匹配 SK6812",
+    "DTS 括号配平(剥离注释后)",
+    "keymap 两层各 100 绑定",
+    "RGB behavior 枚举全部合法",
+    "shield 命名 build/zmk.yml/Kconfig 三处一致",
+    "键位/矩阵沿用 B1 已验证配置未改动"
+  ],
+  "build_validation": "本地无 west/Zephyr 工具链，未本地编译；已对照 ZMK v0.3 官方源码(ws2812-spi overlay、rgb.h、matrix-transform binding、Kconfig)逐项静态校验。需 push 到 GitHub 由 Actions 实际编译。"
+}

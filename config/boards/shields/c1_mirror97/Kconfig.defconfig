@@ -1,0 +1,6 @@
+if SHIELD_C1_MIRROR97
+
+config ZMK_KEYBOARD_NAME
+    default "C1 Mirror97 RGB"
+
+endif

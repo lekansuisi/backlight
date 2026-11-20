@@ -1,0 +1,9 @@
+file_format: "1"
+id: c1_mirror97
+name: C1 Mirror97 RGB
+type: shield
+requires:
+  - pro_micro
+features:
+  - keys
+  - underglow

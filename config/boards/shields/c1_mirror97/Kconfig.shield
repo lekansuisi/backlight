@@ -1,0 +1,2 @@
+config SHIELD_C1_MIRROR97
+    def_bool $(shields_list_contains,c1_mirror97)

@@ -1,0 +1,5 @@
+# C1 Mirror97 RGB：一块板、一个主控、一个 shield（含 98 灯 SPI 灯链）
+---
+include:
+  - board: nice_nano_v2
+    shield: c1_mirror97
